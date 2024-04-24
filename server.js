@@ -33,14 +33,15 @@ const Score = mongoose.model('Score', ScoreSchema);
 // Routes
 app.post('/scores', async (req, res) => {
     const { name, score } = req.body;
-    const newScore = new Score({ name, score });
     try {
+        const newScore = new Score({ name, score });
         const savedScore = await newScore.save();
-        res.status(201).send(savedScore);
+        res.status(201).json(savedScore);
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).json({ message: "Failed to save score", error: error.message });
     }
 });
+
 
 app.get('/scores', async (req, res) => {
     try {

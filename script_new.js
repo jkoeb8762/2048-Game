@@ -228,14 +228,17 @@ function undoMove() {
 document.getElementById('undoButton').addEventListener('click', undoMove);
 
 async function sendScore(name, score) {
-    const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/', {
+    const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/scores', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ name, score })
     });
-    return response.json();
+    if (!response.ok) {
+        throw new Error('Failed to post score');
+    }
+    return response.json();  // Ensure the server responds with JSON
 }
 
 async function updateLeaderboard() {
