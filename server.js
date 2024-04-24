@@ -5,8 +5,13 @@ const cors = require('cors'); // Import CORS module
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Use CORS middleware
-app.use(cors());
+// Configure CORS
+const corsOptions = {
+    origin: 'https://jkoeb8762.github.io', // Allow only your GitHub Pages domain
+    optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 
 // Body-parser middleware
 app.use(bodyParser.json());
