@@ -44,7 +44,7 @@ app.post('/scores', async (req, res) => {
 
 app.get('/scores', async (req, res) => {
     try {
-        const scores = await Score.find().sort({ score: -1 }).limit(5); // Fetch only top 5 scores
+        const scores = await Score.find().sort({score: -1}).limit(5);
         res.json(scores);
     } catch (error) {
         res.status(500).send("Error retrieving scores: " + error.message);
