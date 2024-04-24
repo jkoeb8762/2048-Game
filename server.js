@@ -27,9 +27,6 @@ const ScoreSchema = new mongoose.Schema({
     name: String,
     score: Number
 });
-app.get('/', (req, res) => {
-    res.send('Hello World!'); 
-});
 
 const Score = mongoose.model('Score', ScoreSchema);
 
