@@ -228,7 +228,7 @@ function undoMove() {
 document.getElementById('undoButton').addEventListener('click', undoMove);
 
 async function sendScore(name, score) {
-    const response = await fetch('http://localhost:3000/scores', {
+    const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -240,7 +240,7 @@ async function sendScore(name, score) {
 
 async function updateLeaderboard() {
     try {
-        const response = await fetch('http://localhost:3000/scores');
+        const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/');
         if (!response.ok) {
             throw new Error('Failed to fetch leaderboard');
         }
