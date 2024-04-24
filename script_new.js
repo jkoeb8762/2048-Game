@@ -130,6 +130,7 @@ function handleInput(event) {
             sendScore(playerName, gameState.score)
                 .then(updateLeaderboard)
                 .catch(error => console.error('Failed to update leaderboard:', error));
+            setupNewGame()
         }
     }
 }
