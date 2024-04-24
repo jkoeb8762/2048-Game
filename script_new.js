@@ -240,13 +240,13 @@ async function sendScore(name, score) {
 
 async function updateLeaderboard() {
     try {
-        const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/');
+        const response = await fetch('https://jkoeb8762-project1-da9dde41d410.herokuapp.com/scores');
         if (!response.ok) {
             throw new Error('Failed to fetch leaderboard');
         }
         const scores = await response.json();
         const leaderboard = document.getElementById('leaderboard');
-        leaderboard.innerHTML = '';  // Ensure it clears previous entries
+        leaderboard.innerHTML = '';  // Clear previous entries
         scores.forEach((score, index) => {
             const entry = document.createElement('div');
             entry.textContent = `${index + 1}. ${score.name} - ${score.score}`;
