@@ -1,15 +1,15 @@
 # 2048 Game Project
 
 ## Introduction
-This repository contains the source code for a web-based version of the popular game 2048, developed using  JavaScript, HTML, CSS, Node.js, and MongoDB, along with deployment on Heroku.
+Welcome to my version of the classic 2048 game! 
 
-## Technologies Used
-- **JavaScript**: Used for game logic and front-end interaction.
-- **HTML/CSS**: Used for structuring and styling the web application.
-- **Node.js/Express**: Serves as the backend server framework.
-- **MongoDB**: Utilized for storing and retrieving high scores via MongoDB Atlas.
-- **Heroku**: Application is deployed on Heroku, showcasing skills in cloud-based hosting.
-- **CORS**: Configuration in Express to handle cross-origin resource sharing, ensuring the front-end hosted on GitHub Pages can interact with the backend on Heroku.
+## Built With
+- **JavaScript**: Powers the game's logic and dynamic features.
+- **HTML/CSS**: Provides the structure and style.
+- **Node.js/Express**: Manages the server-side logic, including API services for the leaderboard.
+- **MongoDB**: Stores high scores, allowing players to compete for the top spots.
+- **Heroku**: Hosts the application, making it accessible worldwide.
+- **CORS**: Configured to ensure smooth interaction between the frontend hosted on GitHub Pages and the backend on Heroku.
 
 ## Features
 - **Game Logic**: Implementation of the 2048 game rules, allowing players to merge tiles and score.
@@ -26,5 +26,3 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 
 ## Author
 Rary Huang - jkoeb8762
-
-
