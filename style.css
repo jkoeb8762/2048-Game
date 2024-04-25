@@ -108,6 +108,14 @@ h2 {
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
+        overflow: visible;
+    }
+
+    /* Remove styles that may prevent scrolling */
+    body, html {
+        height: auto; /* Ensure body and html can expand as needed */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow-y: visible; /* Ensure vertical scrolling is enabled */
     }
 
     /* Adjust the gameContainer to prevent cutoff */
@@ -135,6 +143,11 @@ h2 {
         margin: 5px; /* Add margin to separate buttons */
         padding: 10px; /* Ensure padding is adequate */
     }
+    
+    /* Buttons no longer shrink on tap */
+    #undoButton:active, #restartButton:active {
+        transform: none; /* Disable scaling */
+    }
 
     /* Style the button container */
     #buttonContainer {
@@ -149,6 +162,5 @@ h2 {
     #leaderboardContainer {
         width: 75vw; /* Match the width of the gameContainer */
         margin: 10px auto 20px; /* Center it, add vertical spacing at the top, and more at the bottom */
-        /* overflow-y: auto; /* Allows scrolling within the leaderboard if it's too tall */
     }
 }
