@@ -328,6 +328,7 @@ function handleTouchEnd(event) {
     touchStartPos = null;
 }
 
-document.addEventListener('touchstart', handleTouchStart, { passive: false });
-document.addEventListener('touchmove', handleTouchMove, { passive: false });
-document.addEventListener('touchend', handleTouchEnd, { passive: false });
+const justin = document.getElementById('gameContainer')
+justin.addEventListener('touchstart', handleTouchStart, { passive: false });
+justin.addEventListener('touchmove', handleTouchMove, { passive: false });
+justin.addEventListener('touchend', handleTouchEnd, { passive: false });
