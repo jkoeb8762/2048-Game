@@ -94,49 +94,50 @@ h2 {
 
 /* Mobile-specific styles */
 @media (max-width: 600px) {
-    /* Adjust the score display to be full width and centered above the game container */
-    #scoreContainer {
-        width: 100%;
-        text-align: center;
-        order: 1; /* Order is used to rearrange flex items */
+    /* Ensure the body takes at least full viewport height for scrolling */
+    body, html {
+        height: 100%;
+        margin: 0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
-    /* Ensure the game container takes the full width and is not too tall */
+    /* Maintain aspect ratio and center the game grid */
     #gameContainer {
         width: 90vw;
-        height: auto;
-        order: 2; /* The game container comes after the score */
+        height: 90vw; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center the grid */
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 4px; /* Adjust gap to ensure it looks proportional on mobile */
     }
 
-    /* Position the undo and new game buttons below the game container */
+    /* Adjust tile size and font to ensure clear visibility */
+    .tile {
+        font-size: 6vw; /* Adjust font size */
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Button layout adjustments */
     #undoButton, #restartButton {
-        position: static;
-        width: 48%; /* Assign width to the buttons to fit two in a row */
-        margin: 1%; /* Add margin to space out the buttons */
-        bottom: auto;
-        left: auto;
-        order: 3; /* These buttons come after the game container */
+        width: 45%; /* Adjust width to fit side by side */
+        font-size: 4vw; /* Adjust font size */
+        margin: 0; /* Reset any margins */
     }
 
-    /* Ensure the button container holds the undo and new game buttons correctly */
+    /* Button container adjustments */
     #buttonContainer {
-        width: 100%;
         display: flex;
-        justify-content: space-between; /* This will space the buttons apart */
-        order: 4;
+        justify-content: space-between; /* Align buttons side by side */
+        width: 90vw; /* Match the width of the game container */
+        margin: 0 auto; /* Center the buttons container */
+        padding: 10px 0; /* Add padding for spacing */
     }
 
-    /* Make the leaderboard take the full width and appear last */
+    /* Adjust the leaderboard below the buttons */
     #leaderboardContainer {
         width: 90vw;
-        order: 5;
-    }
-
-    /* Adjust the layout of the game area to be flex column direction */
-    #gameArea {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        margin: 0 auto; /* Center the leaderboard */
     }
 }
 
