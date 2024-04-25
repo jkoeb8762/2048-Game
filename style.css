@@ -67,29 +67,48 @@ h2 {
 
 /* Mobile-specific styles */
 @media (max-width: 600px) {
+    /* Reset gameWrapper to stack the components vertically on mobile */
     #gameWrapper {
-        flex-direction: column; /* Stack elements vertically */
+        flex-direction: column;
+        align-items: center;
     }
 
-    #gameContainer, #scoreContainer, #leaderboardContainer {
-        width: 90vw; /* Adjust width to be responsive */
+    /* Adjust the gameContainer to fit the screen size */
+    #gameContainer {
+        width: 90vw;
+        height: 90vw; /* Maintain aspect ratio */
     }
 
+    /* Adjust the tiles to fit the new gameContainer size */
+    .tile {
+        font-size: 5vw; /* Adapt font size based on viewport width */
+    }
+
+    /* Adjust the positioning and size of the buttons */
     #undoButton, #restartButton {
-        font-size: 3vw;
-        padding: 5px 10px; /* Smaller padding */
-        margin: 5px 0; /* Add some margin for better spacing */
+        position: static; /* Use normal document flow on mobile */
+        width: 48%; /* Almost half the container's width, leaving some space for margins */
+        margin: 0 1%; /* Small horizontal margin */
+        padding: 10px;
+        font-size: 5vw;
     }
 
+    /* Adjust the score and leaderboard container styles */
+    #scoreContainer, #leaderboardContainer {
+        width: 90vw; /* Adjust width to match gameContainer */
+        margin-top: 20px; /* Add some spacing */
+    }
+
+    /* Place the button container in the flow */
     #buttonContainer {
         display: flex;
-        justify-content: space-around; /* Space buttons evenly */
-        width: 100%; /* Full width */
+        justify-content: space-between; /* Space the buttons out evenly */
+        width: 90vw; /* Match the width of the gameContainer */
+        margin-top: 10px; /* Add spacing above buttons */
     }
 
-    #leaderboardContainer {
-        order: 3; /* Ensure this is at the bottom on mobile */
-        margin-left: 0; /* Remove left margin */
-        margin-top: 10px; /* Add top margin for spacing */
+    /* Modify the leaderboard entries for better visibility on mobile */
+    #leaderboard div {
+        font-size: 5vw; /* Adapt font size based on viewport width */
     }
 }
