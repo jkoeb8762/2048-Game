@@ -21,9 +21,9 @@
 
 /* Styling buttons */
 #undoButton, #restartButton {
-    padding: 10px 20px;
     position: absolute;
-    bottom: -50px; /* Adjust as needed */
+    bottom: -50px; /* Adjust as necessary to place below the game container */
+    padding: 10px 20px;
 }
 
 #undoButton {
@@ -94,62 +94,61 @@ h2 {
 
 /* Mobile-specific styles */
 @media (max-width: 600px) {
-    /* Ensure the body takes at least full viewport height for scrolling */
+    /* Allow scrolling on the body if content overflows */
     body, html {
-        height: 100%;
+        height: auto; /* Remove fixed height */
         margin: 0;
         overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-y: auto; /* Enable vertical scrolling if necessary */
     }
 
-    /* Make sure gameArea manages the layout */
+    /* Center the gameArea */
     #gameArea {
-        display: flex;
+        width: 100%; /* Take full width to center content */
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
     }
 
-    /* Adjust gameWrapper to only concern itself with the game grid */
-    #gameWrapper {
-        margin: 0 auto; /* Center gameWrapper if needed */
-    }
-    /* Maintain aspect ratio and center the game grid */
+    /* Adjust the gameContainer to prevent cutoff */
     #gameContainer {
-        width: 90vw;
-        height: 90vw; /* Maintain aspect ratio */
-        margin: 0 auto; /* Center the grid */
+        width: 80vw; /* Decrease width if necessary to prevent cutoff */
+        height: 80vw; /* Adjust height to maintain aspect ratio */
+        margin: 10px auto; /* Add top and bottom margin */
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
-        gap: 4px; /* Adjust gap to ensure it looks proportional on mobile */
+        gap: 4px; /* Adjust gap to ensure it looks proportional */
     }
 
-    /* Adjust tile size and font to ensure clear visibility */
+    /* Ensure tiles are sized correctly and text fits */
     .tile {
-        font-size: 6vw; /* Adjust font size */
+        font-size: 5vw; /* Adjust font size for smaller screens */
         align-items: center;
         justify-content: center;
     }
 
-    /* Button layout adjustments */
+    /* Adjust button styles to prevent overlapping with the leaderboard */
     #undoButton, #restartButton {
+        position: static; /* Remove absolute positioning */
         width: 45%; /* Adjust width to fit side by side */
-        font-size: 4vw; /* Adjust font size */
-        margin: 0; /* Reset any margins */
+        font-size: 5vw; /* Increase font size if necessary for legibility */
+        margin: 5px; /* Add margin to separate buttons */
+        padding: 10px; /* Ensure padding is adequate */
     }
 
-    /* Button container adjustments */
+    /* Style the button container */
     #buttonContainer {
+        width: 80vw; /* Match the width of the gameContainer */
+        margin: 10px auto; /* Center it and add vertical spacing */
         display: flex;
         justify-content: space-between; /* Align buttons side by side */
-        width: 90vw; /* Match the width of the game container */
-        margin: 0 auto; /* Center the buttons container */
-        padding: 10px 0; /* Add padding for spacing */
+        padding: 0; /* Adjust padding as necessary */
     }
 
-    /* Adjust the leaderboard below the buttons */
+    /* Style for the leaderboard container */
     #leaderboardContainer {
-        width: 90vw;
-        margin: 0 auto; /* Center the leaderboard */
+        width: 75vw; /* Match the width of the gameContainer */
+        margin: 10px auto 20px; /* Center it, add vertical spacing at the top, and more at the bottom */
+        /* overflow-y: auto; /* Allows scrolling within the leaderboard if it's too tall */
     }
 }
-
