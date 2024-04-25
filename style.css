@@ -1,3 +1,4 @@
+/* Desktop and default styles */
 #gameArea {
     display: flex;
     justify-content: center;
@@ -6,6 +7,7 @@
 
 #gameWrapper {
     position: relative;
+    display: flex; /* This will align the game and leaderboard side by side on desktop */
 }
 
 #gameContainer {
@@ -18,18 +20,8 @@
     gap: 10px;
 }
 
-#undoButton {
-    position: absolute;
-    bottom: -50px; /* Adjust as necessary to place below the game container */
+#undoButton, #restartButton {
     padding: 10px 20px;
-    left: 0;
-}
-
-#restartButton {
-    position: absolute;
-    bottom: -50px; /* Adjust as necessary to place below the game container */
-    padding: 10px 20px;
-    right: 0;
 }
 
 .tile {
@@ -42,30 +34,12 @@
     transition: background-color 0.2s, transform 0.2s; /* Unified transition */
 }
 
-.tile:hover, button:hover {
-    background-color: #e0e0e0; /* Light grey for hover */
-}
-
-.tile:active, button:active {
-    transform: scale(0.98); /* Slightly shrink on click */
-}
-
-@keyframes pop {
-    from { transform: scale(0.5); }
-    to { transform: scale(1); }
-}
-
-.tile.new { /* Ensure new tiles pop */
-    animation: pop 0.3s;
-}
-
 #scoreContainer {
     margin: 10px 20px; /* Adjust margins for visual appeal */
     font-size: 24px;
     font-weight: bold;
     text-align: center; /* Center-align the score text */
 }
-
 
 #leaderboardContainer {
     width: 300px;
@@ -91,62 +65,31 @@ h2 {
     color: #666;
 }
 
+/* Mobile-specific styles */
 @media (max-width: 600px) {
-    #gameArea {
-        flex-direction: column;
-        align-items: center;
+    #gameWrapper {
+        flex-direction: column; /* Stack elements vertically */
     }
 
-    #gameContainer {
-        width: 90vw;
-        height: 90vw; /* Keep the aspect ratio */
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-    }
-
-    .tile {
-        font-size: 4vw; /* Adjust font size based on the width of the viewport */
+    #gameContainer, #scoreContainer, #leaderboardContainer {
+        width: 90vw; /* Adjust width to be responsive */
     }
 
     #undoButton, #restartButton {
         font-size: 3vw;
         padding: 5px 10px; /* Smaller padding */
-        position: static; /* Use normal flow in mobile layout */
-        margin: 10px auto; /* Center the buttons */
+        margin: 5px 0; /* Add some margin for better spacing */
     }
 
     #buttonContainer {
         display: flex;
-        width: 100%; /* Take full width of the container */
         justify-content: space-around; /* Space buttons evenly */
-    }
-
-    #scoreContainer, #leaderboardContainer {
-        width: 90vw; /* Match the width of the game container */
-        text-align: center; /* Center text for better readability */
-        margin-top: 10px; /* Space above the container */
+        width: 100%; /* Full width */
     }
 
     #leaderboardContainer {
-        order: 3; /* Make leaderboard appear last */
-    }
-
-    #gameWrapper {
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center;
-    }
-
-    #leaderboard {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    #leaderboard div {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        color: #333;
+        order: 3; /* Ensure this is at the bottom on mobile */
+        margin-left: 0; /* Remove left margin */
+        margin-top: 10px; /* Add top margin for spacing */
     }
 }
-
-
