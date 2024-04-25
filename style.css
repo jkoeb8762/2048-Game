@@ -96,6 +96,7 @@ h2 {
 @media (max-width: 600px) {
     /* Allow scrolling on the body if content overflows */
     body, html {
+        height: auto;
         margin: 0;
         padding: 0;
         overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -111,13 +112,6 @@ h2 {
         align-items: center;
         margin: 0 auto;
         overflow: visible;
-    }
-
-    /* Remove styles that may prevent scrolling */
-    body, html {
-        height: auto; /* Ensure body and html can expand as needed */
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-        overflow-y: visible; /* Ensure vertical scrolling is enabled */
     }
 
     /* Adjust the gameContainer to prevent cutoff */
