@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2048</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="testing.css">
 </head>
 <body>
     <div id="scoreContainer" aria-live="polite">Score: <span id="score">0</span></div>
@@ -13,8 +13,10 @@
             <div id="gameContainer">
                 <!-- Game tiles will be dynamically inserted here -->
             </div>
-            <button id="undoButton" tabindex="0" aria-label="Undo last move">Undo</button>
-            <button id="restartButton">New Game</button>
+            <div id="buttonContainer">
+                <button id="undoButton" tabindex="0" aria-label="Undo last move">Undo</button>
+                <button id="restartButton">New Game</button>
+            </div>
         </div>
         <div id="leaderboardContainer">
             <h2>Leaderboard</h2>

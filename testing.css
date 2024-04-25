@@ -21,9 +21,9 @@
 
 /* Styling buttons */
 #undoButton, #restartButton {
-    padding: 10px 20px;
     position: absolute;
-    bottom: -50px; /* Adjust as needed */
+    bottom: -50px; /* Adjust as necessary to place below the game container */
+    padding: 10px 20px;
 }
 
 #undoButton {
@@ -152,4 +152,3 @@ h2 {
         margin: 0 auto; /* Center the leaderboard */
     }
 }
-
