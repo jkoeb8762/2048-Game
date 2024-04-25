@@ -145,7 +145,7 @@ h2 {
     #undoButton, #restartButton {
         position: static;
         width: 45%; /* Almost half the viewport width */
-        font-size: 5vw; /* Increase font size for better legibility */
+        font-size: 3vw; /* Increase font size for better legibility */
         margin: 5px auto; /* Center buttons with automatic horizontal margins */
         padding: 10px; /* Adequate padding */
     }
