@@ -93,7 +93,7 @@ h2 {
 }
 
 /* Mobile-specific styles */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     /* Reset gameWrapper to stack the components vertically on mobile */
     #gameWrapper {
         flex-direction: column;
