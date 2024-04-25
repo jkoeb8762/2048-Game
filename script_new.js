@@ -124,13 +124,25 @@ function handleInput(event) {
         drawBoard();
 
         if (isGameOver()) {
-            console.log('Game Over!');
             gameState.gameOver = true;
+            console.log('Game Over!');
             let playerName = prompt("Game Over! Enter your name to record your score:", "Player");
-            sendScore(playerName, gameState.score)
-                .then(updateLeaderboard)
-                .catch(error => console.error('Failed to update leaderboard:', error));
-            setupNewGame()
+            if (playerName) {
+                sendScore(playerName, gameState.score)
+                    .then(() => {
+                        return updateLeaderboard();
+                    })
+                    .then(() => {
+                        setupNewGame(); // Reset the game once the leaderboard is updated
+                    })
+                    .catch(error => {
+                        console.error('Failed to update leaderboard:', error);
+                        alert('Failed to update leaderboard. Starting new game.');
+                        setupNewGame(); // Reset the game even if leaderboard update fails
+                    });
+            } else {
+                setupNewGame(); // If player cancels the prompt, reset the game immediately
+            }
         }
     }
 }
@@ -153,6 +165,7 @@ function setupNewGame() {
     gameState.board = initializeBoard(gridSize);
     gameState.score = 0;
     gameState.gameOver = false;
+    gameState.history = [];
     addRandomTile(gameState.board);
     addRandomTile(gameState.board);
     drawBoard();
@@ -262,3 +275,5 @@ async function updateLeaderboard() {
         leaderboard.innerHTML = 'Leaderboard is currently unavailable.';
     }
 }
+
+document.getElementById('restartButton').addEventListener('click', setupNewGame);
