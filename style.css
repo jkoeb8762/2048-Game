@@ -18,18 +18,17 @@
     gap: 10px;
 }
 
-/* Styling buttons */
-#undoButton, #restartButton {
+#undoButton {
     position: absolute;
     bottom: -50px; /* Adjust as necessary to place below the game container */
     padding: 10px 20px;
-}
-
-#undoButton {
     left: 0;
 }
 
 #restartButton {
+    position: absolute;
+    bottom: -50px; /* Adjust as necessary to place below the game container */
+    padding: 10px 20px;
     right: 0;
 }
 
@@ -92,19 +91,25 @@ h2 {
     color: #666;
 }
 
-@media (max-width: 768px) {
-    #gameArea {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 600px) {
+    #gameContainer {
+        width: 90vw;
+        height: 90vw; /* Keep the aspect ratio */
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
     }
 
-    #gameContainer, #leaderboardContainer {
-        width: 100%; /* Full width for smaller screens */
-        margin-bottom: 20px;
+    .tile {
+        font-size: 4vw; /* Adjust font size based on the width of the viewport */
     }
 
-    #undoButton {
-        position: static; /* Reset position for smaller screens */
-        margin-top: 10px; /* Provide some space */
+    #undoButton, #restartButton {
+        font-size: 3vw;
+        padding: 5px 10px; /* Smaller padding */
+    }
+
+    #leaderboardContainer, #scoreContainer {
+        font-size: 4vw;
     }
 }
+

@@ -277,3 +277,57 @@ async function updateLeaderboard() {
 }
 
 document.getElementById('restartButton').addEventListener('click', setupNewGame);
+
+//Adding Mobile Support
+let touchStartPos = null;
+let touchEndPos = null;
+
+function handleTouchStart(event) {
+    touchStartPos = {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+    };
+}
+
+function handleTouchMove(event) {
+    // Prevent scrolling when touching the game area
+    event.preventDefault();
+}
+
+function handleTouchEnd(event) {
+    if (!touchStartPos) {
+        return;
+    }
+
+    touchEndPos = {
+        x: event.changedTouches[0].clientX,
+        y: event.changedTouches[0].clientY
+    };
+
+    const dx = touchEndPos.x - touchStartPos.x;
+    const dy = touchEndPos.y - touchStartPos.y;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    if (Math.max(absDx, absDy) > 10) { // threshold in pixels for swipe vs tap
+        if (absDx > absDy) {
+            if (dx > 0) {
+                handleInput({ key: 'ArrowRight' });
+            } else {
+                handleInput({ key: 'ArrowLeft' });
+            }
+        } else {
+            if (dy > 0) {
+                handleInput({ key: 'ArrowDown' });
+            } else {
+                handleInput({ key: 'ArrowUp' });
+            }
+        }
+    }
+
+    touchStartPos = null;
+}
+
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+document.addEventListener('touchend', handleTouchEnd, { passive: false });
