@@ -157,4 +157,11 @@ h2 {
         overflow-y: auto; /* Scroll inside if too many entries */
         max-height: 40vh; /* Restrict height to ensure it does not take all space */
     }
+
+    #undoButton:active, #restartButton:active {
+        transform: none; /* Disable scaling */
+    }
+    #undoButton:hover, #restartButton:hover {
+        transform: none; /* Disable scaling */
+    }
 }
