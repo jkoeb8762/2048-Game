@@ -18,11 +18,19 @@
     gap: 10px;
 }
 
-#undoButton {
+/* Styling buttons */
+#undoButton, #restartButton {
     position: absolute;
     bottom: -50px; /* Adjust as necessary to place below the game container */
-    left: 0;
     padding: 10px 20px;
+}
+
+#undoButton {
+    left: 0;
+}
+
+#restartButton {
+    right: 0;
 }
 
 .tile {
