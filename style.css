@@ -96,11 +96,13 @@ h2 {
 @media (max-width: 600px) {
     /* Allow scrolling on the body if content overflows */
     body, html {
-        height: auto; /* Remove fixed height */
         margin: 0;
-        overflow-x: hidden; /* Prevent horizontal scroll */
-        overflow-y: auto; /* Enable vertical scrolling if necessary */
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow-y: scroll; /* Ensure vertical scrolling is always enabled */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
+
 
     /* Center the gameArea */
     #gameArea {
@@ -144,7 +146,13 @@ h2 {
         padding: 10px; /* Ensure padding is adequate */
     }
     
-    /* Buttons no longer shrink on tap */
+    /* Disable hover effects for buttons on mobile */
+    #undoButton:hover, #restartButton:hover {
+        background-color: inherit; /* Keep the original background color */
+        transform: none; /* Disable any transformation */
+    }
+
+    /* Disable active styles for buttons on mobile */
     #undoButton:active, #restartButton:active {
         transform: none; /* Disable scaling */
     }
