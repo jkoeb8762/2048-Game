@@ -154,7 +154,7 @@ h2 {
     #leaderboardContainer {
         width: 70vw; /* Responsive width */
         margin: 0 auto 10px; /* Add more margin to ensure separation */
-        /*overflow-y: auto; /* Scroll inside if too many entries */
+        overflow-y: auto; /* Scroll inside if too many entries */
         max-height: 40vh; /* Restrict height to ensure it does not take all space */
     }
 }
