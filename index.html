@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="scoreContainer" aria-live="polite">Score: <span id="score">0</span></div>
-    <div id="gameArea"> <!-- Flex container for both game and leaderboard -->
-        <div id="gameWrapper">
-            <div id="gameContainer">
-                <!-- Game tiles will be dynamically inserted here -->
-            </div>
-            <button id="undoButton" tabindex="0" aria-label="Undo last move">Undo</button>
+    <div id="gameWrapper">
+        <div id="scoreContainer">Score: <span id="score">0</span></div>
+        <div id="gameContainer">
+            <!-- Game tiles will be dynamically inserted here -->
+        </div>
+        <div id="buttonContainer">
+            <button id="undoButton">Undo</button>
             <button id="restartButton">New Game</button>
         </div>
         <div id="leaderboardContainer">
             <h2>Leaderboard</h2>
-            <div id="leaderboard" aria-live="assertive" aria-atomic="true"></div>
+            <div id="leaderboard">
+                <!-- Leaderboard entries will be dynamically inserted here -->
+            </div>
         </div>
     </div>
     <script src="script_new.js"></script>
