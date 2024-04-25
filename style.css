@@ -99,8 +99,8 @@ h2 {
         height: auto;
         margin: 0;
         padding: 0;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-        overflow-y: scroll; /* Ensure vertical scrolling is always enabled */
+        overflow:auto;
+        /* overflow-y: scroll; /* Ensure vertical scrolling is always enabled */
         -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
 
