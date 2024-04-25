@@ -93,49 +93,50 @@ h2 {
 }
 
 /* Mobile-specific styles */
-@media (max-width: 768px) {
-    /* Reset gameWrapper to stack the components vertically on mobile */
-    #gameWrapper {
+@media (max-width: 600px) {
+    /* Adjust the score display to be full width and centered above the game container */
+    #scoreContainer {
+        width: 100%;
+        text-align: center;
+        order: 1; /* Order is used to rearrange flex items */
+    }
+
+    /* Ensure the game container takes the full width and is not too tall */
+    #gameContainer {
+        width: 90vw;
+        height: auto;
+        order: 2; /* The game container comes after the score */
+    }
+
+    /* Position the undo and new game buttons below the game container */
+    #undoButton, #restartButton {
+        position: static;
+        width: 48%; /* Assign width to the buttons to fit two in a row */
+        margin: 1%; /* Add margin to space out the buttons */
+        bottom: auto;
+        left: auto;
+        order: 3; /* These buttons come after the game container */
+    }
+
+    /* Ensure the button container holds the undo and new game buttons correctly */
+    #buttonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* This will space the buttons apart */
+        order: 4;
+    }
+
+    /* Make the leaderboard take the full width and appear last */
+    #leaderboardContainer {
+        width: 90vw;
+        order: 5;
+    }
+
+    /* Adjust the layout of the game area to be flex column direction */
+    #gameArea {
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-    /* Adjust the gameContainer to fit the screen size */
-    #gameContainer {
-        width: 90vw;
-        height: 90vw; /* Maintain aspect ratio */
-    }
-
-    /* Adjust the tiles to fit the new gameContainer size */
-    .tile {
-        font-size: 5vw; /* Adapt font size based on viewport width */
-    }
-
-    /* Adjust the positioning and size of the buttons */
-    #undoButton, #restartButton {
-        position: static; /* Use normal document flow on mobile */
-        width: 48%; /* Almost half the container's width, leaving some space for margins */
-        margin: 0 1%; /* Small horizontal margin */
-        padding: 10px;
-        font-size: 5vw;
-    }
-
-    /* Adjust the score and leaderboard container styles */
-    #scoreContainer, #leaderboardContainer {
-        width: 90vw; /* Adjust width to match gameContainer */
-        margin-top: 20px; /* Add some spacing */
-    }
-
-    /* Place the button container in the flow */
-    #buttonContainer {
-        display: flex;
-        justify-content: space-between; /* Space the buttons out evenly */
-        width: 90vw; /* Match the width of the gameContainer */
-        margin-top: 10px; /* Add spacing above buttons */
-    }
-
-    /* Modify the leaderboard entries for better visibility on mobile */
-    #leaderboard div {
-        font-size: 5vw; /* Adapt font size based on viewport width */
-    }
 }
+
