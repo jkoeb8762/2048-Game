@@ -7,11 +7,10 @@
 
 #gameWrapper {
     position: relative;
-    display: flex; /* This will align the game and leaderboard side by side on desktop */
+    width: 400px;  /* Match the width of the gameContainer for alignment */
 }
 
 #gameContainer {
-    width: 400px;
     height: 400px;
     border: 2px solid #000;
     display: grid;
@@ -20,8 +19,19 @@
     gap: 10px;
 }
 
+/* Styling buttons */
 #undoButton, #restartButton {
+    position: absolute;
+    bottom: -50px; /* Adjust as necessary to place below the game container */
     padding: 10px 20px;
+}
+
+#undoButton {
+    left: 0;
+}
+
+#restartButton {
+    right: 0;
 }
 
 .tile {
@@ -32,6 +42,23 @@
     font-size: 20px;
     font-weight: bold;
     transition: background-color 0.2s, transform 0.2s; /* Unified transition */
+}
+
+.tile:hover, button:hover {
+    background-color: #e0e0e0; /* Light grey for hover */
+}
+
+.tile:active, button:active {
+    transform: scale(0.98); /* Slightly shrink on click */
+}
+
+@keyframes pop {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+.tile.new { /* Ensure new tiles pop */
+    animation: pop 0.3s;
 }
 
 #scoreContainer {
