@@ -94,75 +94,80 @@ h2 {
 
 /* Mobile-specific styles */
 @media (max-width: 600px) {
-    /* Allow scrolling on the body if content overflows */
+    /* Ensure that body takes at least the full height of the viewport and enables scrolling */
     body, html {
-        height: auto;
+        height: 100%; /* Full viewport height */
         margin: 0;
         padding: 0;
-        overflow:auto;
-        /* overflow-y: scroll; /* Ensure vertical scrolling is always enabled */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow-y: scroll; /* Allow vertical scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling for touch devices */
     }
 
-
-    /* Center the gameArea */
+    /* Center the gameArea and ensure it allows for content growth */
     #gameArea {
-        width: 100%; /* Take full width to center content */
         flex-direction: column;
-        align-items: center;
-        margin: 0 auto;
-        overflow: visible;
+        align-items: center; /* Center children horizontally */
+        justify-content: flex-start; /* Align children to the top */
+        width: 100%; /* Full width of the viewport */
+        margin: 0; /* Center gameArea */
+        padding: 0; /* Reset padding */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
     }
 
-    /* Adjust the gameContainer to prevent cutoff */
+    /* Adjust gameContainer to maintain aspect ratio and fit within the viewport */
     #gameContainer {
-        width: 80vw; /* Decrease width if necessary to prevent cutoff */
-        height: 80vw; /* Adjust height to maintain aspect ratio */
-        margin: 10px auto; /* Add top and bottom margin */
+        width: 70vw; /* Use a smaller width to prevent cutoff */
+        height: 70vw; /* Height matches the width to maintain aspect ratio */
+        margin: 10px auto; /* Center the game container */
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
         gap: 4px; /* Adjust gap to ensure it looks proportional */
     }
 
-    /* Ensure tiles are sized correctly and text fits */
+    /* Adjust tiles for better visibility */
     .tile {
-        font-size: 5vw; /* Adjust font size for smaller screens */
+        font-size: 5vw; /* Proportional font size for tiles */
         align-items: center;
         justify-content: center;
     }
 
-    /* Adjust button styles to prevent overlapping with the leaderboard */
+    /* Button styles */
     #undoButton, #restartButton {
-        position: static; /* Remove absolute positioning */
-        width: 45%; /* Adjust width to fit side by side */
-        font-size: 5vw; /* Increase font size if necessary for legibility */
-        margin: 5px; /* Add margin to separate buttons */
-        padding: 10px; /* Ensure padding is adequate */
-    }
-    
-    /* Disable hover effects for buttons on mobile */
-    #undoButton:hover, #restartButton:hover {
-        background-color: inherit; /* Keep the original background color */
-        transform: none; /* Disable any transformation */
-    }
-
-    /* Disable active styles for buttons on mobile */
-    #undoButton:active, #restartButton:active {
-        transform: none; /* Disable scaling */
+        position: static;
+        width: 45%; /* Almost half the viewport width */
+        font-size: 5vw; /* Increase font size for better legibility */
+        margin: 5px auto; /* Center buttons with automatic horizontal margins */
+        padding: 10px; /* Adequate padding */
     }
 
     /* Style the button container */
     #buttonContainer {
-        width: 80vw; /* Match the width of the gameContainer */
-        margin: 10px auto; /* Center it and add vertical spacing */
         display: flex;
-        justify-content: space-between; /* Align buttons side by side */
-        padding: 0; /* Adjust padding as necessary */
+        justify-content: space-between; /* Align buttons to the far ends */
+        width: 70vw; /* Match the width of the game container */
+        margin: 10px auto; /* Center it */
+        padding: 0 5px; /* Add padding inside the container */
     }
 
-    /* Style for the leaderboard container */
+    /* Remove transformation effects for buttons */
+    #undoButton:active, #restartButton:active, 
+    #undoButton:hover, #restartButton:hover {
+        transform: none;
+        background-color: #ddd; /* Default background */
+    }
+
+    /* Ensure the leaderboard container is not cut off */
     #leaderboardContainer {
-        width: 75vw; /* Match the width of the gameContainer */
-        margin: 10px auto 20px; /* Center it, add vertical spacing at the top, and more at the bottom */
+        width: 80vw; /* Slightly less than full width to ensure it doesn't get cut off */
+        margin: 0 auto 10px; /* Center the container and add spacing below */
+        overflow-y: auto; /* Enable scrolling within leaderboard if it overflows */
+        max-height: 50vh; /* Limit height to half of the viewport */
+    }
+
+    /* Reset leaderboard styles */
+    #leaderboard div {
+        padding: 10px; /* Consistent padding */
+        border-bottom: 1px solid #ddd; /* Visual separation of items */
     }
 }
